@@ -6,7 +6,7 @@ import Track from '../models/Track.js';
  * @route POST /api/courses
  */
 export const createCourse = async (req, res) => {
-  const { title, description, trackId } = req.body;
+  const { title, description, trackIds } = req.body;
 
   try {
     // Validate that each track exists
@@ -55,7 +55,7 @@ export const getAllCourses = async (req, res) => {
 export const getCourseById = async (req, res) => {
   try {
     const course = await Course.findById(req.params.id).populate(
-      'track instructor',
+      'tracks instructor',
       'title name email'
     );
     if (!course) return res.status(404).json({ message: 'Course not found' });
