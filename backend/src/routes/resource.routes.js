@@ -1,6 +1,7 @@
 import express from 'express';
 import {
   addResource,
+  deleteResource,
   getResourcesByLesson,
 } from '../controllers/resource.controller.js';
 import { protect } from '../middlewares/authMiddleware.js';
@@ -19,5 +20,7 @@ router.post(
 
 // GET /api/resources/lesson/:lessonId - Get all resources for a lesson
 router.get('/lesson/:lessonId', getResourcesByLesson);
+
+router.delete('/:id', protect, deleteResource);
 
 export default router;

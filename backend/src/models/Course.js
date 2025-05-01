@@ -6,6 +6,7 @@ const courseSchema = new mongoose.Schema(
     description: String,
     tracks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Track' }],
     instructor: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    isPremium: { type: Boolean, default: true },
   },
   { timestamps: true }
 );

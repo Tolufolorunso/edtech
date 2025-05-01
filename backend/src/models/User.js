@@ -6,9 +6,18 @@ const userSchema = new mongoose.Schema(
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    role: { type: String, enum: ['student', 'instructor'], default: 'student' },
+    role: {
+      type: String,
+      enum: ['student', 'instructor', 'admin', 'superadmin'],
+      default: 'student',
+    },
+    profilePicture: { type: String, default: '' },
+    bio: { type: String, default: '' },
     resetToken: String,
     resetTokenExpiry: Date,
+    completedLessons: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Lesson' }],
+    completedCourses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }],
+    hasSubscription: { type: Boolean, default: false },
   },
   { timestamps: true }
 );

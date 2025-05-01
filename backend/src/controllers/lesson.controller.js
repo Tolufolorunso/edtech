@@ -66,3 +66,27 @@ export const createLesson = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+/**
+ * @desc Delete a lesson
+ * @route DELETE /api/lessons/:lessonId
+ * @access Instructor (owner only)
+ */
+export const deleteLesson = async (req, res) => {
+  try {
+    const lesson = await Lesson.findById(req.params.lessonId);
+    if (!lesson) return res.status(404).json({ message: 'Lesson not found' });
+
+    const course = await Course.findById(lesson.course);
+    if (course.instructor.toString() !== req.user.id) {
+      return res
+        .status(403)
+        .json({ message: 'Not authorized to delete this lesson' });
+    }
+
+    await lesson.deleteOne();
+    res.json({ message: 'Lesson deleted' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};

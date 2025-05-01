@@ -9,6 +9,8 @@ import trackRoutes from './routes/track.routes.js';
 import enrollmentRoutes from './routes/enrollment.routes.js';
 import lessonRoutes from './routes/lesson.routes.js';
 import resourceRoutes from './routes/resource.routes.js';
+import progressRoutes from './routes/progress.routes.js';
+import adminRoutes from './routes/admin.routes.js';
 
 const app = express();
 app.use(cors());
@@ -21,6 +23,9 @@ app.use('/api/courses', courseRoutes);
 app.use('/api/lessons', lessonRoutes);
 app.use('/api/enrollments', enrollmentRoutes);
 app.use('/api/resources', resourceRoutes);
+app.use('/api/progress', progressRoutes);
+app.use('/api/progress', progressRoutes);
+app.use('/api/admin', adminRoutes);
 
 mongoose
   .connect(process.env.MONGO_URI)

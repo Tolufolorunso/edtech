@@ -1,5 +1,6 @@
 import express from 'express';
 import {
+  enroll,
   enrollInCourse,
   getMyEnrollments,
 } from '../controllers/enrollment.controller.js';
@@ -12,5 +13,7 @@ router.post('/:courseId', protect, enrollInCourse);
 
 // GET /api/enrollments/my - View all enrollments
 router.get('/my', protect, getMyEnrollments);
+
+router.post('/', protect, enroll);
 
 export default router;

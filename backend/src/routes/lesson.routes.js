@@ -5,6 +5,7 @@ import {
   getLessonsByCourse,
   getLessonById,
   createLesson,
+  deleteLesson,
 } from '../controllers/lesson.controller.js';
 
 import { protect } from '../middlewares/authMiddleware.js';
@@ -25,5 +26,7 @@ router.post(
   body('videoUrl').notEmpty(),
   createLesson
 );
+
+router.delete('/:lessonId', protect, deleteLesson);
 
 export default router;

@@ -41,3 +41,31 @@ export const getResourcesByLesson = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+/**
+ * @desc Delete a resource
+ * @route DELETE /api/resources/:id
+ * @access Instructor
+ */
+export const deleteResource = async (req, res) => {
+  try {
+    const resource = await Resource.findById(req.params.id).populate({
+      path: 'lesson',
+      populate: { path: 'course' },
+    });
+
+    if (!resource)
+      return res.status(404).json({ message: 'Resource not found' });
+
+    if (resource.lesson.course.instructor.toString() !== req.user.id) {
+      return res
+        .status(403)
+        .json({ message: 'Not authorized to delete this resource' });
+    }
+
+    await resource.deleteOne();
+    res.json({ message: 'Resource deleted' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
