@@ -11,6 +11,9 @@ import lessonRoutes from './routes/lesson.routes.js';
 import resourceRoutes from './routes/resource.routes.js';
 import progressRoutes from './routes/progress.routes.js';
 import adminRoutes from './routes/admin.routes.js';
+import healthRoutes from './routes/health.routes.js';
+
+import { notFound, errorHandler } from './middlewares/errorMiddleware.js';
 
 const app = express();
 app.use(cors());
@@ -26,6 +29,10 @@ app.use('/api/resources', resourceRoutes);
 app.use('/api/progress', progressRoutes);
 app.use('/api/progress', progressRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/health', healthRoutes);
+
+app.use(notFound);
+app.use(errorHandler);
 
 mongoose
   .connect(process.env.MONGO_URI)
