@@ -11,12 +11,16 @@ export const createTrack = async (req, res) => {
   try {
     const exists = await Track.findOne({ title });
     if (exists)
-      return res.status(400).json({ message: 'Track already exists' });
+      return res
+        .status(400)
+        .json({ status: false, message: 'Track already exists' });
 
     const track = await Track.create({ title, description });
-    res.status(201).json(track);
+    res
+      .status(201)
+      .json({ track, message: 'Track created successfully', status: true });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json({ status: false, message: err.message });
   }
 };
 

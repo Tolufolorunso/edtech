@@ -1,0 +1,107 @@
+.registerPage {
+  min-height: calc(100vh - 140px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.formWrapper {
+  padding: 2rem;
+  width: 100%;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.header p {
+  color: var(--dark-gray);
+}
+
+.imageWrapper {
+  display: none;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 100%
+  );
+  color: white;
+  padding: 3rem;
+  position: relative;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.benefits {
+  list-style: none;
+}
+
+.benefits li {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.benefits li::before {
+  content: '✓';
+  display: inline-block;
+  margin-right: 0.75rem;
+  font-weight: bold;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    min-height: 600px;
+  }
+
+  .formWrapper {
+    width: 60%;
+    padding: 3rem;
+  }
+
+  .imageWrapper {
+    display: block;
+    width: 40%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .formWrapper {
+    width: 50%;
+  }
+
+  .imageWrapper {
+    width: 50%;
+  }
+}

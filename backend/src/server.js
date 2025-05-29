@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import mongoose from 'mongoose';
+import cookieParser from 'cookie-parser';
 
 import authRoutes from './routes/auth.routes.js';
 import courseRoutes from './routes/course.routes.js';
@@ -11,14 +12,27 @@ import lessonRoutes from './routes/lesson.routes.js';
 import resourceRoutes from './routes/resource.routes.js';
 import progressRoutes from './routes/progress.routes.js';
 import adminRoutes from './routes/admin.routes.js';
+import bootcampRoutes from './routes/bootcamp.routes.js';
 import healthRoutes from './routes/health.routes.js';
 
 import { notFound, errorHandler } from './middlewares/errorMiddleware.js';
 
 const app = express();
+
 app.use(cors());
 app.use(helmet());
 app.use(express.json());
+app.use(cookieParser(process.env.COOKIE_SECRET));
+
+app.get('/', function (req, res) {
+  // Cookies that have not been signed
+  console.log('Cookies: ', req.cookies);
+  console.log('Signed Cookies: ', req.signedCookies);
+  res.json({
+    status: true,
+    message: 'Home',
+  });
+});
 
 app.use('/api/auth', authRoutes);
 app.use('/api/tracks', trackRoutes);
@@ -29,6 +43,7 @@ app.use('/api/resources', resourceRoutes);
 app.use('/api/progress', progressRoutes);
 app.use('/api/progress', progressRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/bootcamps', bootcampRoutes);
 app.use('/api/health', healthRoutes);
 
 app.use(notFound);

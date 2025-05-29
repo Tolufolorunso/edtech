@@ -1,0 +1,147 @@
+.navigation {
+  width: 100%;
+  background-color: white;
+  border-right: 1px solid var(--medium-gray);
+  overflow-y: auto;
+  height: 300px;
+  transition: transform 0.3s ease, height 0.3s ease;
+}
+
+/* Add styles for mobile navigation */
+.navigationMobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 200;
+  height: 100vh;
+  transform: translateY(100%);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navigationMobileOpen {
+  transform: translateY(0);
+}
+
+.navigationMobileHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.navigationMobileHeader h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.title {
+  padding: 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  border-bottom: 1px solid var(--medium-gray);
+  margin: 0;
+}
+
+.lessonList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lessonItem {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid var(--medium-gray);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.lessonItem:hover {
+  background-color: var(--light-gray);
+}
+
+.lessonItem.selected {
+  background-color: rgba(58, 134, 255, 0.1);
+  border-left: 4px solid var(--primary-color);
+}
+
+.lessonItem.completed {
+  background-color: rgba(76, 175, 80, 0.05);
+}
+
+.lessonNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: var(--medium-gray);
+  color: var(--text-color);
+  border-radius: 50%;
+  margin-right: 1rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.lessonItem.completed .lessonNumber {
+  background-color: #4caf50;
+  color: white;
+}
+
+.lessonInfo {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lessonTitle {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.completedBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 50%;
+  font-size: 0.75rem;
+}
+
+.empty {
+  padding: 2rem;
+  text-align: center;
+  color: var(--dark-gray);
+}
+
+@media (min-width: 768px) {
+  .navigation {
+    width: 300px;
+    height: 100%;
+    transform: none;
+    position: static;
+  }
+
+  .navigationMobileHeader {
+    display: none;
+  }
+}

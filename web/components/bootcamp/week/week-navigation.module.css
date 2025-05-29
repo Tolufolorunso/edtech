@@ -1,0 +1,120 @@
+.container {
+  width: 100%;
+}
+
+.mobileToggle {
+  display: none;
+  padding: 1rem;
+  background-color: #f5f7fa;
+  border: 1px solid #eaeaea;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  cursor: pointer;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon {
+  transition: transform 0.2s;
+}
+
+.icon.open {
+  transform: rotate(180deg);
+}
+
+.navigation {
+  background-color: #f5f7fa;
+  border: 1px solid #eaeaea;
+  border-radius: 0.375rem;
+  padding: 1.5rem;
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.weeksList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.weeksList li {
+  margin-bottom: 0.5rem;
+}
+
+.weeksList li a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-radius: 0.375rem;
+  color: #666;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.weeksList li a:hover {
+  background-color: #e6e9ed;
+  color: #333;
+}
+
+.weeksList li.active a {
+  background-color: rgba(0, 112, 243, 0.1);
+  color: #0070f3;
+  font-weight: 500;
+}
+
+.weekNumber {
+  font-size: 0.9rem;
+}
+
+.checkIcon {
+  opacity: 0;
+}
+
+.weeksList li.active .checkIcon {
+  opacity: 1;
+  color: #0070f3;
+}
+
+.actions {
+  margin-top: 1rem;
+}
+
+.backButton {
+  display: inline-block;
+  padding: 0.75rem 1rem;
+  background-color: white;
+  color: #0070f3;
+  border: 1px solid #0070f3;
+  border-radius: 0.375rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
+  text-align: center;
+  width: 100%;
+}
+
+.backButton:hover {
+  background-color: rgba(0, 112, 243, 0.1);
+}
+
+@media (max-width: 768px) {
+  .mobileToggle {
+    display: flex;
+  }
+
+  .navigation {
+    display: none;
+    margin-top: 1rem;
+  }
+
+  .navigation.open {
+    display: block;
+  }
+}

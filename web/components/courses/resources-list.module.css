@@ -1,0 +1,72 @@
+.resourcesList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.resourceGroup {
+  border: 1px solid var(--medium-gray);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.resourceType {
+  background-color: var(--light-gray);
+  padding: 0.75rem 1rem;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  border-bottom: 1px solid var(--medium-gray);
+}
+
+.resourceItems {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.resourceItem {
+  padding: 1rem;
+  border-bottom: 1px solid var(--medium-gray);
+}
+
+.resourceItem:last-child {
+  border-bottom: none;
+}
+
+.resourceLink {
+  display: block;
+  color: var(--primary-color);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.resourceLink:hover {
+  text-decoration: underline;
+}
+
+.resourceContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.resourceTitle {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.resourceText {
+  margin: 0;
+  color: var(--dark-gray);
+  white-space: pre-line;
+}
+
+.empty {
+  padding: 2rem;
+  text-align: center;
+  color: var(--dark-gray);
+  background-color: var(--light-gray);
+  border-radius: 0.5rem;
+}

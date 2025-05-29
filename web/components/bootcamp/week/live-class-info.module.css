@@ -1,0 +1,144 @@
+.container {
+  width: 100%;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.description {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.classCard {
+  background-color: #f5f7fa;
+  border: 1px solid #eaeaea;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.classHeader {
+  margin-bottom: 1rem;
+}
+
+.classTopic {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.classInstructor {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.classInstructor span {
+  font-weight: 500;
+}
+
+.classDetails {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.detailItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.detailIcon {
+  color: #0070f3;
+}
+
+.detailText {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.classDescription {
+  margin-bottom: 1.5rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+.classActions {
+  display: flex;
+  gap: 1rem;
+}
+
+.joinButton {
+  padding: 0.75rem 1.5rem;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  display: inline-block;
+}
+
+.joinButton:hover {
+  background-color: #0060df;
+}
+
+.calendarButton {
+  padding: 0.75rem 1.5rem;
+  background-color: white;
+  color: #0070f3;
+  border: 1px solid #0070f3;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.calendarButton:hover {
+  background-color: rgba(0, 112, 243, 0.1);
+}
+
+.reminder {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background-color: rgba(0, 112, 243, 0.1);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.reminderIcon {
+  color: #0070f3;
+  flex-shrink: 0;
+}
+
+.reminderText {
+  font-size: 0.9rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .classActions {
+    flex-direction: column;
+  }
+
+  .joinButton,
+  .calendarButton {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}

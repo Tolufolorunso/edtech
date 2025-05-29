@@ -1,0 +1,62 @@
+.quizList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.quizItem {
+  border: 1px solid var(--medium-gray);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  background-color: var(--light-gray);
+}
+
+.quizHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.quizTitle {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.aiBadge {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.quizDescription {
+  margin-bottom: 1.5rem;
+  color: var(--dark-gray);
+}
+
+.startButton {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.startButton:hover {
+  background-color: #2a75e8;
+}
+
+.empty {
+  padding: 2rem;
+  text-align: center;
+  color: var(--dark-gray);
+  background-color: var(--light-gray);
+  border-radius: 0.5rem;
+}

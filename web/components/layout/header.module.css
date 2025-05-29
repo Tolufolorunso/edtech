@@ -1,0 +1,172 @@
+.header {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.desktopNav {
+  display: none;
+}
+
+.desktopNav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.desktopNav a {
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.desktopNav a:hover,
+.desktopNav a.active {
+  color: var(--primary-color);
+}
+
+.authButtons {
+  display: none;
+}
+
+.loginButton,
+.dashboardLink {
+  margin-right: 1rem;
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+.registerButton,
+.logoutButton {
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+}
+
+.logoutButton {
+  background-color: var(--accent-color);
+}
+
+.mobileMenuButton {
+  display: block;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 101;
+}
+
+.hamburger {
+  width: 24px;
+  height: 18px;
+  position: relative;
+  transform: rotate(0deg);
+  transition: 0.5s ease-in-out;
+}
+
+.hamburger span {
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: var(--text-color);
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: 0.25s ease-in-out;
+}
+
+.hamburger span:nth-child(1) {
+  top: 0px;
+}
+
+.hamburger span:nth-child(2) {
+  top: 8px;
+}
+
+.hamburger span:nth-child(3) {
+  top: 16px;
+}
+
+.hamburger.open span:nth-child(1) {
+  top: 8px;
+  transform: rotate(135deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+
+.hamburger.open span:nth-child(3) {
+  top: 8px;
+  transform: rotate(-135deg);
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  padding: 5rem 2rem 2rem;
+  z-index: 100;
+}
+
+.mobileMenu ul {
+  list-style: none;
+}
+
+.mobileMenu li {
+  margin-bottom: 1.5rem;
+}
+
+.mobileMenu a,
+.mobileMenu button {
+  font-size: 1.25rem;
+  font-weight: 500;
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.mobileMenu a.active {
+  color: var(--primary-color);
+}
+
+@media (min-width: 768px) {
+  .desktopNav,
+  .authButtons {
+    display: flex;
+    align-items: center;
+  }
+
+  .mobileMenuButton {
+    display: none;
+  }
+}

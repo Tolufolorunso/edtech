@@ -11,6 +11,14 @@ const userSchema = new mongoose.Schema(
       enum: ['student', 'instructor', 'admin', 'superadmin'],
       default: 'student',
     },
+    bootcamp: { type: Boolean, default: false },
+    hasBootcampSubscription: { type: Boolean, default: false },
+    bootcampsArr: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Bootcamp',
+      },
+    ],
     profilePicture: { type: String, default: '' },
     bio: { type: String, default: '' },
     resetToken: String,

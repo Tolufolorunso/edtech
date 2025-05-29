@@ -1,0 +1,14 @@
+.courseDetailsPage {
+  padding: 2rem 1rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .courseDetailsPage {
+    padding: 3rem 1rem;
+  }
+}

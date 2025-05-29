@@ -5,27 +5,58 @@ import crypto from 'crypto';
 import { sendResetEmail } from '../utils/email.js';
 
 export const register = async (req, res) => {
+  let { name, email, password, role, bootcamp } = req.body;
+
+  role = role ? role : 'student';
+
   const errors = validationResult(req);
-  if (!errors.isEmpty())
-    return res.status(400).json({ errors: errors.array() });
 
-  const { name, email, password, role } = req.body;
-  const userExists = await User.findOne({ email });
+  if (!errors.isEmpty()) {
+    let message = errors
+      .array()
+      .map((err) => `${err.path}: ${err.msg}`)
+      .join(', ');
 
-  if (userExists)
-    return res.status(400).json({ message: 'Invalid credentials' });
+    return res.status(400).json({ message });
+  }
 
-  const user = await User.create({ name, email, password, role });
-  res.status(201).json({ token: generateToken(user), user });
+  try {
+    // Prevent unwanted roles
+    if (role && ['admin', 'superadmin'].includes(role)) {
+      return res.status(403).json({ message: 'Unauthorized role assignment' });
+    }
+
+    const userExists = await User.findOne({ email });
+    if (userExists) return res.status(400).json({ message: 'user exists' });
+
+    const newUser = await User.create({
+      name,
+      email,
+      password,
+      bootcamp,
+      role: role === 'instructor' ? 'instructor' : 'student',
+    });
+
+    res.status(201).json({
+      status: true,
+      message: 'User created successfully',
+    });
+  } catch (err) {
+    res.status(500).json({ status: false, message: 'Server error' });
+  }
 };
 
 export const login = async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
+
   if (!user || !(await user.comparePassword(password))) {
     return res.status(401).json({ message: 'Invalid credentials' });
   }
-  res.json({ token: generateToken(user), user });
+  const token = generateToken(user);
+  console.log(token);
+
+  res.json({ status: true, token, user, message: 'Login successful' });
 };
 
 export const forgotPassword = async (req, res) => {
@@ -39,7 +70,7 @@ export const forgotPassword = async (req, res) => {
   await user.save();
 
   sendResetEmail(user.email, token);
-  res.json({ message: 'Reset email sent (check console)' });
+  res.json({ status: true, message: 'Reset email sent (check console)' });
 };
 
 export const resetPassword = async (req, res) => {
